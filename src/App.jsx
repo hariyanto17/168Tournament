@@ -126,10 +126,7 @@ const App = () => {
 
     let roundX = 20;
 
-    // --- Perubahan di sini: startY sekarang konstan untuk semua putaran ---
-    // Atur satu titik awal vertikal untuk seluruh bagan, bukan per putaran.
     const startY = headerHeight + 50;
-    // Variabel baru untuk mengontrol jarak antara judul putaran dan pertandingan
     const roundTitleToMatchSpacing = 30;
 
     rounds.forEach((round, roundIndex) => {
@@ -140,15 +137,16 @@ const App = () => {
       // Menampilkan nama putaran
       g.append("text")
         .attr("x", roundX + matchWidth / 2)
-        .attr("y", startY + roundTitleToMatchSpacing - 50) // Menyesuaikan posisi y agar judul tetap di atas
+        .attr("y", startY + roundTitleToMatchSpacing - 50) 
         .attr("text-anchor", "middle")
         .attr("class", "text-green-500 font-bold text-lg")
         .text(round.name);
         
       round.data.forEach((match, matchIndex) => {
-        // yPos1 dihitung berdasarkan startY konstan yang baru, ditambah jarak baru
+        // yPos1 dihitung berdasarkan startY, ditambah jarak antara blok pertandingan.
+        // Sekarang jarak antar match sama dengan jarak antar pemain dalam satu match.
         const yPos1 =
-          startY + roundTitleToMatchSpacing + matchIndex * (matchHeight * 2 + roundVerticalSpacing);
+          startY + roundTitleToMatchSpacing + matchIndex * (matchHeight * 2 + 2 * roundVerticalSpacing);
         const yPos2 = yPos1 + matchHeight + roundVerticalSpacing;
 
         // Menggambar konektor ke putaran berikutnya
