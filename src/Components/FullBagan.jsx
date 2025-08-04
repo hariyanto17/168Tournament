@@ -4,8 +4,6 @@ import data from "../data.json";
 const leftData = data.children[0];
 const rightData = data.children[1];
 
-
-
 const FullBagan = () => {
   const svgRef = useRef(null);
 
@@ -48,12 +46,15 @@ const FullBagan = () => {
 
     // Add zoom functionality with boundaries
     // Menambahkan batasan zoom, mencegah zoom out terlalu jauh
-    const zoom = d3.zoom()
+    const zoom = d3
+      .zoom()
       .scaleExtent([0.2, 1]) // Batas zoom: 0.2 (zoom out minimum) hingga 1 (zoom normal)
       .on("zoom", (event) => {
         g.attr("transform", event.transform);
       });
     svg.call(zoom);
+    // Mengatur zoom awal ke 0.2
+    svg.call(zoom.transform, d3.zoomIdentity.scale(0.2));
 
     // The update function handles rendering and transitions for one half of the bracket
     function update(event, root, group, isLeft) {
@@ -223,6 +224,55 @@ const FullBagan = () => {
 
     update(null, leftRoot, leftGroup, true);
     update(null, rightRoot, rightGroup, false);
+
+    // Menambahkan garis yang menghubungkan Final dari kedua grup
+    const leftFinalNode = leftRoot.descendants().find(d => d.data.title === "Final");
+    const rightFinalNode = rightRoot.descendants().find(d => d.data.title === "Final");
+    
+    if (leftFinalNode && rightFinalNode) {
+      const leftFinalPos = {
+        x: leftFinalNode.x + (height / 2 - (leftRoot.x + (leftRoot.descendants().find(d => d.x > leftRoot.x)?.x - leftRoot.x) / 2)),
+        y: width / 2 - leftFinalNode.y - horizontalSpacing / 2
+      };
+      const rightFinalPos = {
+        x: rightFinalNode.x + (height / 2 - (rightRoot.x + (rightRoot.descendants().find(d => d.x > rightRoot.x)?.x - rightRoot.x) / 2)),
+        y: width / 2 + rightFinalNode.y + horizontalSpacing / 2
+      };
+
+      g.append("path")
+        .attr("class", "final-link")
+        .attr("stroke", "#fff")
+        .attr("stroke-opacity", 0.8)
+        .attr("stroke-width", 2)
+        .attr("fill", "none")
+        .attr("d", () => {
+          const source = { x: leftFinalPos.x, y: leftFinalPos.y };
+          const target = { x: rightFinalPos.x, y: rightFinalPos.y };
+          const linkGenerator = d3.linkHorizontal().x(d => d.y).y(d => d.x);
+          return linkGenerator({ source: source, target: target });
+        });
+      
+      // Menambahkan SVG trofi di tengah garis final menggunakan fetch
+      fetch("tropy.svg")
+        .then(response => response.text())
+        .then(svgText => {
+          const trophySize = 30;
+          const trophyX = (leftFinalPos.y + rightFinalPos.y) / 2 - trophySize / 2;
+          const trophyY = (leftFinalPos.x + rightFinalPos.x) / 2 - trophySize / 2;
+
+          const trophySvgElement = new DOMParser().parseFromString(svgText, "image/svg+xml").documentElement;
+          
+          d3.select(trophySvgElement)
+            .attr("width", trophySize)
+            .attr("height", trophySize)
+            .attr("x", trophyX)
+            .attr("y", trophyY)
+            .style("pointer-events", "none");
+            
+          g.node().appendChild(trophySvgElement);
+        })
+        .catch(error => console.error("Error loading trophy SVG:", error));
+    }
     
     // Cleanup function
     return () => {
@@ -236,6 +286,5 @@ const FullBagan = () => {
     </div>
   );
 };
-
 
 export default FullBagan;
