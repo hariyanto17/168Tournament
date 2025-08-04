@@ -38,7 +38,7 @@ const FullBagan = ({ data }) => {
 
     const zoom = d3
       .zoom()
-      .scaleExtent([0.2, 1]) 
+      .scaleExtent([0.2, 2]) 
       .on("zoom", (event) => {
         console.log("event", event);
         g.attr("transform", event.transform);

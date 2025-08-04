@@ -27,7 +27,7 @@ const Dashboard = () => {
               alt="Banner"
               className={`w-full object-cover md:max-w-1/2 h-auto transition-all duration-1000 ease-out ${
                 isLoaded
-                  ? "opacity-100 translate-y-0"
+                  ? "opacity-100 -translate-y-60 md:translate-y-0"
                   : "opacity-0 -translate-y-full"
               }`}
             />
