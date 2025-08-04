@@ -1,2 +1,5 @@
 @import "tailwindcss";
 
+path .link {
+    fill: "#fff"
+}

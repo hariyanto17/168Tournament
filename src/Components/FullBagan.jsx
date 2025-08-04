@@ -1,32 +1,26 @@
 import * as d3 from "d3";
 import { useEffect, useRef } from "react";
-import data from "../data.json";
-const leftData = data.children[0];
-const rightData = data.children[1];
 
-const FullBagan = () => {
+const FullBagan = ({ data }) => {
+  const leftData = data.children[0];
+  const rightData = data.children[1];
   const svgRef = useRef(null);
 
   useEffect(() => {
     if (!svgRef.current) return;
 
-    // Dimensions for the SVG container
-    const width = 928;
-    const height = 1200;
-    // Jarak horizontal antar node telah ditingkatkan lagi
+    const width = window.innerWidth - 32;
+    const height = window.innerHeight - 200;
     const horizontalSpacing = 400;
 
-    // The tree layout calculates positions for all nodes
-    // Nilai pertama di nodeSize mengontrol jarak vertikal
+
     const tree = d3.tree().nodeSize([30, 80]);
 
-    // Custom link generator for horizontal links with a curve
     const diagonal = d3
       .linkHorizontal()
       .x((d) => d.y)
       .y((d) => d.x);
 
-    // Initial setup of the SVG element
     const svg = d3
       .select(svgRef.current)
       .attr("width", width)
@@ -34,22 +28,19 @@ const FullBagan = () => {
       .attr("viewBox", [0, 0, width, height])
       .attr(
         "style",
-        "max-width: 100%; height: auto; font: 12px sans-serif; user-select: none;"
+        ` max-width: 100%; height: ${height}; font: 12px sans-serif; user-select: none;`
       );
 
-    // Create a group for all zoomable content
     const g = svg.append("g");
 
-    // Create groups for each bracket half
     const leftGroup = g.append("g").attr("id", "left-bracket");
     const rightGroup = g.append("g").attr("id", "right-bracket");
 
-    // Add zoom functionality with boundaries
-    // Menambahkan batasan zoom, mencegah zoom out terlalu jauh
     const zoom = d3
       .zoom()
-      .scaleExtent([0.2, 1]) // Batas zoom: 0.2 (zoom out minimum) hingga 1 (zoom normal)
+      .scaleExtent([0.2, 1]) 
       .on("zoom", (event) => {
+        console.log("event", event);
         g.attr("transform", event.transform);
       });
     svg.call(zoom);
@@ -89,11 +80,7 @@ const FullBagan = () => {
           return `translate(${y},${parentX + verticalOffset})`;
         })
         .attr("fill-opacity", 0)
-        .attr("stroke-opacity", 0)
-        .on("click", (event, d) => {
-          d.children = d.children ? null : d._children;
-          update(event, root, group, isLeft);
-        });
+        .attr("stroke-opacity", 0);
 
       nodeEnter
         .append("circle")
@@ -101,7 +88,7 @@ const FullBagan = () => {
         .attr("fill", (d) => (d._children ? "#fff" : "#888"))
         .attr("stroke", "currentColor")
         .attr("stroke-width", 1.5);
-      
+
       nodeEnter
         .append("rect")
         .attr("y", -10)
@@ -112,24 +99,24 @@ const FullBagan = () => {
         .attr("fill-opacity", 0.7)
         .attr("stroke", "#475569")
         .attr("stroke-width", 1);
-      
+
       nodeEnter
         .append("text")
         .attr("dy", "0.31em")
-        .attr("text-anchor", (d) => (isLeft ? "end" : "start"))
+        .attr("text-anchor", () => (isLeft ? "end" : "start"))
+        .attr("fill", "#F2F2F2")
+        .attr("stroke", "none")
         .text((d) => (d.data.name === "TBD" ? d.data.title : d.data.name))
-        .each(function(d) {
+        .each(function () {
           const textElement = d3.select(this);
           const textWidth = textElement.node().getComputedTextLength();
           const rect = d3.select(this.parentNode).select("rect");
-          rect.attr("width", textWidth + 12)
-              .attr("x", isLeft ? -(textWidth + 12 + 6) : 6);
+          rect.attr("width", textWidth + 12).attr("x", isLeft ? -textWidth : 0);
         })
         .clone(true)
         .lower()
         .attr("stroke-linejoin", "round")
-        .attr("stroke-width", 3)
-        .attr("stroke", "#1e293b");
+        .attr("stroke-width", 3);
 
       node
         .merge(nodeEnter)
@@ -219,24 +206,46 @@ const FullBagan = () => {
     const leftRoot = d3.hierarchy(leftData);
     const rightRoot = d3.hierarchy(rightData);
 
-    leftRoot.each((d) => { d.x0 = leftRoot.x; d.y0 = leftRoot.y; });
-    rightRoot.each((d) => { d.x0 = rightRoot.x; d.y0 = rightRoot.y; });
+    leftRoot.each((d) => {
+      d.x0 = leftRoot.x;
+      d.y0 = leftRoot.y;
+    });
+    rightRoot.each((d) => {
+      d.x0 = rightRoot.x;
+      d.y0 = rightRoot.y;
+    });
 
     update(null, leftRoot, leftGroup, true);
     update(null, rightRoot, rightGroup, false);
 
     // Menambahkan garis yang menghubungkan Final dari kedua grup
-    const leftFinalNode = leftRoot.descendants().find(d => d.data.title === "Final");
-    const rightFinalNode = rightRoot.descendants().find(d => d.data.title === "Final");
-    
+    const leftFinalNode = leftRoot
+      .descendants()
+      .find((d) => d.data.title === "Final");
+    const rightFinalNode = rightRoot
+      .descendants()
+      .find((d) => d.data.title === "Final");
+
     if (leftFinalNode && rightFinalNode) {
       const leftFinalPos = {
-        x: leftFinalNode.x + (height / 2 - (leftRoot.x + (leftRoot.descendants().find(d => d.x > leftRoot.x)?.x - leftRoot.x) / 2)),
-        y: width / 2 - leftFinalNode.y - horizontalSpacing / 2
+        x:
+          leftFinalNode.x +
+          (height / 2 -
+            (leftRoot.x +
+              (leftRoot.descendants().find((d) => d.x > leftRoot.x)?.x -
+                leftRoot.x) /
+                2)),
+        y: width / 2 - leftFinalNode.y - horizontalSpacing / 2,
       };
       const rightFinalPos = {
-        x: rightFinalNode.x + (height / 2 - (rightRoot.x + (rightRoot.descendants().find(d => d.x > rightRoot.x)?.x - rightRoot.x) / 2)),
-        y: width / 2 + rightFinalNode.y + horizontalSpacing / 2
+        x:
+          rightFinalNode.x +
+          (height / 2 -
+            (rightRoot.x +
+              (rightRoot.descendants().find((d) => d.x > rightRoot.x)?.x -
+                rightRoot.x) /
+                2)),
+        y: width / 2 + rightFinalNode.y + horizontalSpacing / 2,
       };
 
       g.append("path")
@@ -248,37 +257,55 @@ const FullBagan = () => {
         .attr("d", () => {
           const source = { x: leftFinalPos.x, y: leftFinalPos.y };
           const target = { x: rightFinalPos.x, y: rightFinalPos.y };
-          const linkGenerator = d3.linkHorizontal().x(d => d.y).y(d => d.x);
+          const linkGenerator = d3
+            .linkHorizontal()
+            .x((d) => d.y)
+            .y((d) => d.x);
           return linkGenerator({ source: source, target: target });
         });
-      
+
       // Menambahkan SVG trofi di tengah garis final menggunakan fetch
       fetch("tropy.svg")
-        .then(response => response.text())
-        .then(svgText => {
+        .then((response) => response.text())
+        .then((svgText) => {
           const trophySize = 30;
-          const trophyX = (leftFinalPos.y + rightFinalPos.y) / 2 - trophySize / 2;
-          const trophyY = (leftFinalPos.x + rightFinalPos.x) / 2 - trophySize / 2;
+          const trophyX =
+            (leftFinalPos.y + rightFinalPos.y) / 2 - trophySize / 2;
+          const trophyY =
+            (leftFinalPos.x + rightFinalPos.x) / 2 - trophySize / 2;
 
-          const trophySvgElement = new DOMParser().parseFromString(svgText, "image/svg+xml").documentElement;
-          
+          const trophySvgElement = new DOMParser().parseFromString(
+            svgText,
+            "image/svg+xml"
+          ).documentElement;
+
           d3.select(trophySvgElement)
             .attr("width", trophySize)
             .attr("height", trophySize)
             .attr("x", trophyX)
             .attr("y", trophyY)
             .style("pointer-events", "none");
-            
+
           g.node().appendChild(trophySvgElement);
         })
-        .catch(error => console.error("Error loading trophy SVG:", error));
+        .catch((error) => console.error("Error loading trophy SVG:", error));
     }
-    
+
+    const initialScale = 0.2;
+
+    const translateX = (width / 2) * (1 - initialScale);
+    const translateY = (height / 2) * (1 - initialScale);
+
+    svg.call(
+      zoom.transform,
+      d3.zoomIdentity.translate(translateX, translateY).scale(initialScale)
+    );
+
     // Cleanup function
     return () => {
       svg.selectAll("*").remove();
     };
-  }, []);
+  }, [data, svgRef, leftData, rightData]);
 
   return (
     <div className="flex flex-col items-center">
