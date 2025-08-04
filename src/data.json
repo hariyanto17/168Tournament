@@ -1,0 +1,1274 @@
+{
+  "title": "Champion",
+  "name": "TBD",
+  "children": [
+    {
+      "title": "Final",
+      "name": "TBD",
+      "children": [
+        {
+          "title": "SemiFinal",
+          "name": "TBD",
+          "children": [
+            {
+              "title": "Top 8",
+              "name": "TBD",
+              "children": [
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 1"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 2"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 3"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 4"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 5"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 6"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 7"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 8"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 9"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 10"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 11"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 12"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 13"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 14"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 15"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 16"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Top 8",
+              "name": "TBD",
+              "children": [
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 17"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 18"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 19"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 20"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 21"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 22"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 23"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 24"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 25"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 26"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 27"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 28"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 29"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 30"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 31"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 32"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "SemiFinal",
+          "name": "TBD",
+          "children": [
+            {
+              "title": "Top 8",
+              "name": "TBD",
+              "children": [
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 33"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 34"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 35"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 36"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 37"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 38"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 39"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 40"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 41"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 42"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 43"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 44"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 45"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 46"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 47"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 48"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Top 8",
+              "name": "TBD",
+              "children": [
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 49"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 50"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 51"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 52"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 53"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 54"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 55"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 56"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 57"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 58"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 59"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 60"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 61"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 62"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 63"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 64"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Final",
+      "name": "TBD",
+      "children": [
+        {
+          "title": "SemiFinal",
+          "name": "TBD",
+          "children": [
+            {
+              "title": "Top 8",
+              "name": "TBD",
+              "children": [
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 65"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 66"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 67"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 68"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 69"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 70"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 71"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 72"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 73"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 74"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 75"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 76"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 77"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 78"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 79"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 80"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Top 8",
+              "name": "TBD",
+              "children": [
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 81"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 82"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 83"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 84"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 85"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 86"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 87"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 88"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 89"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 90"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 91"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 92"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 93"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 94"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 95"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 96"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "SemiFinal",
+          "name": "TBD",
+          "children": [
+            {
+              "title": "Top 8",
+              "name": "TBD",
+              "children": [
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 97"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 98"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 99"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 100"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 101"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 102"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 103"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 104"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 105"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 106"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 107"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 108"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 109"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 110"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 111"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 112"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Top 8",
+              "name": "TBD",
+              "children": [
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 113"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 114"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 115"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 116"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 117"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 118"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 119"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 120"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Top 16",
+                  "name": "TBD",
+                  "children": [
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 121"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 122"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 123"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 124"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Top 32",
+                      "name": "TBD",
+                      "children": [
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 125"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 126"
+                            }
+                          ]
+                        },
+                        {
+                          "title": "Top 64",
+                          "name": "TBD",
+                          "children": [
+                            {
+                              "title": "Top 128",
+                              "name": "Player 127"
+                            },
+                            {
+                              "title": "Top 128",
+                              "name": "Player 128"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
