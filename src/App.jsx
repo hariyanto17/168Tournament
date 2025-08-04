@@ -1,226 +1,183 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import { useEffect, useRef } from "react";
+import data from "./data.json";
 
 const App = () => {
-  const [selectedGroup, setSelectedGroup] = useState("A");
   const svgRef = useRef(null);
-
-  const groups = useMemo(() => {
-    const allParticipants = [];
-    for (let i = 1; i <= 128; i++) {
-      allParticipants.push({ key: i, name: `Pemain ${i}` });
-    }
-
-    const groupA = allParticipants.slice(0, 32);
-    const groupB = allParticipants.slice(32, 64);
-    const groupC = allParticipants.slice(64, 96);
-    const groupD = allParticipants.slice(96, 128);
-
-    return {
-      A: groupA,
-      B: groupB,
-      C: groupC,
-      D: groupD,
-    };
-  }, []);
-
-  // Memisahkan data untuk setiap putaran
-  const babak32 = useMemo(() => {
-    const currentParticipants = [...groups[selectedGroup]];
-    const matches = [];
-    for (let i = 0; i < currentParticipants.length; i += 2) {
-      matches.push([currentParticipants[i], currentParticipants[i + 1]]);
-    }
-    return matches;
-  }, [groups, selectedGroup]);
-
-  const babak16 = useMemo(() => {
-    const winners = babak32.map((match, index) => ({
-      key: `winner-0-${index}`,
-      name: `base 16 ${index + 1}`,
-    }));
-    const matches = [];
-    for (let i = 0; i < winners.length; i += 2) {
-      matches.push([winners[i], winners[i + 1]]);
-    }
-    return matches;
-  }, [babak32]);
-
-  const babak8 = useMemo(() => {
-    const winners = babak16.map((match, index) => ({
-      key: `winner-1-${index}`,
-      name: "Winner",
-    }));
-    const matches = [];
-    for (let i = 0; i < winners.length; i += 2) {
-      matches.push([winners[i], winners[i + 1]]);
-    }
-    return matches;
-  }, [babak16]);
-
-  const babak4 = useMemo(() => {
-    const winners = babak8.map((match, index) => ({
-      key: `winner-2-${index}`,
-      name: "Winner",
-    }));
-    const matches = [];
-    for (let i = 0; i < winners.length; i += 2) {
-      matches.push([winners[i], winners[i + 1]]);
-    }
-    return matches;
-  }, [babak8]);
-
-  const babakFinal = useMemo(() => {
-    const winners = babak4.map((match, index) => ({
-      key: `winner-3-${index}`,
-      name: "Winner",
-    }));
-    const matches = [];
-    for (let i = 0; i < winners.length; i += 2) {
-      matches.push([winners[i], winners[i + 1]]);
-    }
-    return matches;
-  }, [babak4]);
-
-
-  // Struktur data rounds yang Anda minta
-  const rounds = useMemo(
-    () => [
-      { name: "Putaran Awal (32 Besar)", data: babak32 },
-      { name: "Putaran 16 Besar", data: babak16 },
-      { name: "Perempat Final", data: babak8 },
-      { name: "Semifinal", data: babak4 },
-      { name: "Final", data: babakFinal },
-    ],
-    [babak32, babak16, babak8, babak4, babakFinal]
-  );
 
   useEffect(() => {
     if (!svgRef.current) return;
 
-    const svg = d3.select(svgRef.current);
-    svg.selectAll("*").remove();
+    const width = 928;
+    const marginTop = 10;
+    const marginRight = 10;
+    const marginBottom = 10;
+    const marginLeft = 40;
 
-    const width = 1200;
-    const height = 1000;
-    const matchWidth = 150;
-    const matchHeight = 40;
-    const paddingX = 100;
-    const baseVerticalSpacing = 20; // Jarak vertikal dasar antar pertandingan
-    const headerHeight = 100; // Tinggi untuk nama putaran
+    const root = d3.hierarchy(data);
+    const dx = 10;
+    const dy = (width - marginRight - marginLeft) / (1 + root.height);
 
-    svg.attr("width", width).attr("height", height);
+    const tree = d3.tree().nodeSize([dx, dy]);
+    const diagonal = d3
+      .linkHorizontal()
+      .x((d) => d.y)
+      .y((d) => d.x);
 
-    // Group untuk semua elemen bagan
+    const svg = d3
+      .select(svgRef.current)
+      .attr("width", width)
+      .attr("height", dx)
+      .attr("viewBox", [-marginLeft, -marginTop, width, dx])
+      .attr(
+        "style",
+        "max-width: 100%; height: auto; font: 10px sans-serif; user-select: none;"
+      );
+
     const g = svg.append("g");
 
-    // Implementasi D3 Zoom
-    const zoom = d3
-      .zoom()
-      .scaleExtent([0.5, 5])
-      .on("zoom", (event) => {
-        g.attr("transform", event.transform);
+    const gLink = g
+      .append("g")
+      .attr("fill", "none")
+      .attr("stroke", "#555")
+      .attr("stroke-opacity", 0.4)
+      .attr("stroke-width", 1.5);
+
+    const gNode = g
+      .append("g")
+      .attr("cursor", "pointer")
+      .attr("pointer-events", "all");
+
+    function update(event, source) {
+      const duration = event?.altKey ? 2500 : 250; // hold the alt key to slow down the transition
+      const nodes = root.descendants().reverse();
+      const links = root.links();
+
+      tree(root);
+
+      let left = root;
+      let right = root;
+      root.eachBefore((node) => {
+        if (node.x < left.x) left = node;
+        if (node.x > right.x) right = node;
       });
 
-    svg.call(zoom);
+      const height = right.x - left.x + marginTop + marginBottom;
 
-    let roundX = 20;
+      const transition = svg
+        .transition()
+        .duration(duration)
+        .attr("height", height)
+        .attr("viewBox", [-marginLeft, left.x - marginTop, width, height])
+        .tween(
+          "resize",
+          window.ResizeObserver ? null : () => () => svg.dispatch("toggle")
+        );
 
-    const startY = headerHeight + 50;
-    const roundTitleToMatchSpacing = 30;
+      // Update the nodes…
+      const node = gNode.selectAll("g").data(nodes, (d) => d.id);
 
-    rounds.forEach((round, roundIndex) => {
+      // Enter any new nodes at the parent's previous position.
+      const nodeEnter = node
+        .enter()
+        .append("g")
+        .attr("transform", () => `translate(${source.y0},${source.x0})`)
+        .attr("fill-opacity", 0)
+        .attr("stroke-opacity", 0)
+        .on("click", (event, d) => {
+          d.children = d.children ? null : d._children;
+          update(event, d);
+        });
 
-      const roundVerticalSpacing =
-        baseVerticalSpacing * Math.pow(2, roundIndex + 1);
-      
-      // Menampilkan nama putaran
-      g.append("text")
-        .attr("x", roundX + matchWidth / 2)
-        .attr("y", startY + roundTitleToMatchSpacing - 50) 
-        .attr("text-anchor", "middle")
-        .attr("class", "text-green-500 font-bold text-lg")
-        .text(round.name);
-        
-      round.data.forEach((match, matchIndex) => {
-        // yPos1 dihitung berdasarkan startY, ditambah jarak antara blok pertandingan.
-        // Sekarang jarak antar match sama dengan jarak antar pemain dalam satu match.
-        const yPos1 =
-          startY + roundTitleToMatchSpacing + matchIndex * (matchHeight * 2 + 2 * roundVerticalSpacing);
-        const yPos2 = yPos1 + matchHeight + roundVerticalSpacing;
+      nodeEnter
+        .append("circle")
+        .attr("r", 2.5)
+        .attr("fill", (d) => (d._children ? "#555" : "#999"))
+        .attr("stroke-width", 10);
 
-        // Menggambar konektor ke putaran berikutnya
-        if (roundIndex < rounds.length - 1) {
-          const nextRoundY = (yPos1 + yPos2) / 2;
-          const path = d3.path();
-          // Garis horizontal dari kedua pemain
-          path.moveTo(roundX + matchWidth, yPos1 + matchHeight / 2);
-          path.lineTo(
-            roundX + matchWidth + paddingX / 2,
-            yPos1 + matchHeight / 2
-          );
-          path.moveTo(roundX + matchWidth, yPos2 + matchHeight / 2);
-          path.lineTo(
-            roundX + matchWidth + paddingX / 2,
-            yPos2 + matchHeight / 2
-          );
+      nodeEnter
+        .append("text")
+        .attr("dy", "0.31em")
+        .attr("x", (d) => (d._children ? -6 : 6))
+        .attr("text-anchor", (d) => (d._children ? "end" : "start"))
+        .text((d) => (d.data.name === "TBD" ? d.data.title : d.data.name))
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-width", 3)
+        .attr("stroke", "white")
+        .attr("paint-order", "stroke");
 
-          // Garis vertikal yang menghubungkan kedua pemain
-          path.moveTo(
-            roundX + matchWidth + paddingX / 2,
-            yPos1 + matchHeight / 2
-          );
-          path.lineTo(
-            roundX + matchWidth + paddingX / 2,
-            yPos2 + matchHeight / 2
-          );
+      // Transition nodes to their new position.
+      node
+        .merge(nodeEnter)
+        .transition(transition)
+        .attr("transform", (d) => `translate(${d.y},${d.x})`)
+        .attr("fill-opacity", 1)
+        .attr("stroke-opacity", 1);
 
-          // Garis horizontal menuju kotak pertandingan berikutnya
-          path.moveTo(roundX + matchWidth + paddingX / 2, nextRoundY);
-          path.lineTo(roundX + matchWidth + paddingX, nextRoundY);
+      // Transition exiting nodes to the parent's new position.
+      node
+        .exit()
+        .transition(transition)
+        .remove()
+        .attr("transform", () => `translate(${source.y},${source.x})`)
+        .attr("fill-opacity", 0)
+        .attr("stroke-opacity", 0);
 
-          g.append("path")
-            .attr("d", path)
-            .attr("stroke", "#FFD700")
-            .attr("stroke-width", 2)
-            .attr("fill", "none");
-        }
+      // Update the links…
+      const link = gLink.selectAll("path").data(links, (d) => d.target.id);
 
-        // Gambar kotak pertandingan untuk pemain 1
-        g.append("rect")
-          .attr("x", roundX)
-          .attr("y", yPos1)
-          .attr("width", matchWidth)
-          .attr("height", matchHeight)
-          .attr("rx", 5)
-          .attr("ry", 5)
-          .attr("class", "fill-gray-800 stroke-gray-700 stroke-1");
+      // Enter any new links at the parent's previous position.
+      const linkEnter = link
+        .enter()
+        .append("path")
+        .attr("d", () => {
+          const o = { x: source.x0, y: source.y0 };
+          return diagonal({ source: o, target: o });
+        });
 
-        g.append("text")
-          .attr("x", roundX + 10)
-          .attr("y", yPos1 + matchHeight / 2 + 5)
-          .attr("class", "fill-gray-200 text-sm")
-          .text(match[0].name);
+      // Transition links to their new position.
+      link.merge(linkEnter).transition(transition).attr("d", diagonal);
 
-        // Gambar kotak pertandingan untuk pemain 2
-        g.append("rect")
-          .attr("x", roundX)
-          .attr("y", yPos2)
-          .attr("width", matchWidth)
-          .attr("height", matchHeight)
-          .attr("rx", 5)
-          .attr("ry", 5)
-          .attr("class", "fill-gray-800 stroke-gray-700 stroke-1");
+      // Transition exiting nodes to the parent's new position.
+      link
+        .exit()
+        .transition(transition)
+        .remove()
+        .attr("d", () => {
+          const o = { x: source.x, y: source.y };
+          return diagonal({ source: o, target: o });
+        });
 
-        g.append("text")
-          .attr("x", roundX + 10)
-          .attr("y", yPos2 + matchHeight / 2 + 5)
-          .attr("class", "fill-gray-200 text-sm")
-          .text(match[1].name);
+      // Stash the old positions for transition.
+      root.eachBefore((d) => {
+        d.x0 = d.x;
+        d.y0 = d.y;
       });
-      roundX += matchWidth + paddingX;
+    }
+
+    // Do the first update to the initial configuration of the tree — where a number of nodes
+    // are open (arbitrarily selected as the root, plus nodes with 7 letters).
+    root.x0 = dy / 2;
+    root.y0 = 0;
+    root.descendants().forEach((d, i) => {
+      d.id = i;
+      d._children = d.children;
+      // if (d.depth && d.data.name.length !== 7) d.children = null;
     });
-  }, [rounds]);
+
+    update(null, root);
+
+    // Add zoom capabilities
+    svg.call(
+      d3.zoom().scaleExtent([0.5, 8]).on("zoom", (event) => {
+        g.attr("transform", event.transform);
+      })
+    );
+
+    return () => {
+      svg.selectAll("*").remove();
+    };
+  }, []);
 
   return (
     <div className="bg-gray-900 text-gray-200 min-h-screen font-inter">
@@ -236,65 +193,8 @@ const App = () => {
           </span>
         </p>
       </header>
-
-      {/* Kontainer utama bagan */}
       <main className="p-4 md:p-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-10 text-yellow-400">
-          Bagan Turnamen
-        </h2>
-
-        {/* Kontainer untuk tombol grup */}
-        <div className="flex justify-center gap-4 mb-8">
-          {["A", "B", "C", "D"].map((group) => (
-            <button
-              key={group}
-              onClick={() => setSelectedGroup(group)}
-              className={`py-2 px-6 rounded-lg font-bold transition-all duration-300
-                ${
-                  selectedGroup === group
-                    ? "bg-yellow-400 text-gray-900 shadow-xl"
-                    : "bg-gray-700 hover:bg-yellow-500 hover:text-gray-900 text-gray-300"
-                }`}
-            >
-              Group {group}
-            </button>
-          ))}
-        </div>
-        {/* Kontainer bagan dan kontrol zoom */}
-        <div className="flex flex-col items-center">
-          {/* Tombol Zoom */}
-          <div className="flex gap-4 mb-4">
-            <button
-              className="bg-gray-700 text-white font-bold p-3 rounded-full hover:bg-gray-600 transition-colors"
-              onClick={() =>
-                d3
-                  .select(svgRef.current)
-                  .transition()
-                  .duration(750)
-                  .call(d3.zoom().scaleBy, 1.2)
-              }
-            >
-              +
-            </button>
-            <button
-              className="bg-gray-700 text-white font-bold p-3 rounded-full hover:bg-gray-600 transition-colors"
-              onClick={() =>
-                d3
-                  .select(svgRef.current)
-                  .transition()
-                  .duration(750)
-                  .call(d3.zoom().scaleBy, 0.8)
-              }
-            >
-              -
-            </button>
-          </div>
-          <div className="flex justify-center overflow-x-auto min-h-[600px] py-8">
-            <div className="flex">
-              <svg ref={svgRef} className="cursor-grab"></svg>
-            </div>
-          </div>
-        </div>
+        <svg ref={svgRef}></svg>
       </main>
     </div>
   );
