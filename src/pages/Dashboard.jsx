@@ -69,7 +69,7 @@ const Dashboard = () => {
               Fun Games Handicap 3 only nine ball
             </h1>
             <p className="text-2xl md:text-4xl font-bold text-yellow-400 mb-8">
-              Total Hadiah Rp.5.500.000
+              Total Hadiah Rp.11.000.000
             </p>
             <div className="max-w-4xl mx-auto backdrop-blur-xs p-8 rounded-xl shadow-lg border border-slate-700">
               <div className="grid md:grid-cols-2 gap-8 text-left text-lg">
@@ -86,7 +86,7 @@ const Dashboard = () => {
                     Selesai
                   </p>
                   <p>
-                    <strong className="font-semibold">Slot:</strong> 148 Peserta
+                    <strong className="font-semibold">Slot:</strong> 128 Peserta
                   </p>
                 </div>
                 <div>
