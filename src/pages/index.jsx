@@ -5,5 +5,6 @@ import Contact from "./Contact";
 import Login from "./Login";
 import Register from "./Register";
 import Streamers from "./Stremers";
+import Participant from "./participant";
 
-export { Dashboard, Bagan, Services, Contact, Login, Register, Streamers };
+export { Dashboard, Bagan, Services, Contact, Login, Register, Streamers, Participant };

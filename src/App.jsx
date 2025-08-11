@@ -7,6 +7,7 @@ import {
   Login,
   Register,
   Streamers,
+  Participant,
 } from "./pages";
 
 let router = createBrowserRouter([
@@ -37,6 +38,10 @@ let router = createBrowserRouter([
   {
     path: "/streamers",
     Component: Streamers,
+  },
+  {
+    path: "/participant",
+    Component: Participant,
   },
 ]);
 

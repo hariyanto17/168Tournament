@@ -1,6 +1,7 @@
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
 import PlayerModal from "./PlayerModal";
+import { useSelector } from "react-redux";
 
 const FullBagan = ({ data }) => {
   const leftData = data.children[0];
@@ -8,7 +9,10 @@ const FullBagan = ({ data }) => {
   const svgRef = useRef(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
+  const { isLogin } = useSelector((state) => state.user);
+
   const playerClick = (player) => {
+    if (!isLogin) return;
     setSelectedPlayer(player);
   };
 
