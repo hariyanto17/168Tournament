@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { useSelector } from "react-redux";
 import logo from "../assets/logo.png";
 
 const Header = () => {
+  const { isLoggedIn } = useSelector((state) => state.user);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -32,12 +34,14 @@ const Header = () => {
           >
             Bagan
           </Link>
-          <Link
-            to="/participant"
-            className="text-gray-300 hover:text-white transition-colors duration-300"
-          >
-            Participant
-          </Link>
+          {isLoggedIn && (
+            <Link
+              to="/participant"
+              className="text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              Participant
+            </Link>
+          )}
           <Link
             to="/services"
             className="text-gray-300 hover:text-white transition-colors duration-300"
@@ -125,13 +129,15 @@ const Header = () => {
         >
           Bagan
         </Link>
-        <Link
-          to="/participant"
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="block px-6 py-2 text-gray-300 hover:bg-gray-700"
-        >
-          Participant
-        </Link>
+        {isLoggedIn && (
+          <Link
+            to="/participant"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block px-6 py-2 text-gray-300 hover:bg-gray-700"
+          >
+            Participant
+          </Link>
+        )}
         <Link
           to="/services"
           onClick={() => setIsMobileMenuOpen(false)}
