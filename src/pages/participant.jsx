@@ -125,7 +125,7 @@ const Participant = () => {
                 <thead>
                   <tr className="bg-gray-700">
                     <th className="p-4 text-left text-sm font-semibold text-yellow-500 uppercase tracking-wider">
-                      Nama
+                      No
                     </th>
                     <th className="p-4 text-left text-sm font-semibold text-yellow-500 uppercase tracking-wider">
                       Status
@@ -136,13 +136,13 @@ const Participant = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-700">
-                  {filteredParticipants.map((id) => (
+                  {filteredParticipants.map((id, index) => (
                     <tr
                       key={id}
                       className="hover:bg-gray-700/50 transition-colors duration-200"
                     >
                       <td className="p-4 whitespace-nowrap">
-                        {participants[id].name}
+                        {index + 1} {participants[id].name}
                       </td>
                       <td className="p-4 whitespace-nowrap">
                         <span
