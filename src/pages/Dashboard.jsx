@@ -1,16 +1,42 @@
 import { useEffect, useState } from "react";
 import { Footer, Header } from "../Components";
+import InstagramIcon from "../assets/Instagram.svg";
+import TiktokIcon from "../assets/Tiktok.svg";
+import YoutubeIcon from "../assets/Youtube.svg";
 import bannerImage from "../assets/banner.png";
 import { Link } from "react-router";
+import { child, onValue, ref } from "firebase/database";
+import { database } from "../config/firebase";
 
 const Dashboard = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [live, setLive] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 300);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const dbRef = ref(database);
+    const streamerRef = child(dbRef, "stream");
+
+    const unsubscribeStream = onValue(streamerRef, (snapshot) => {
+      const data = snapshot.val();
+      console.log("data", data);
+      const loadedItems = [];
+      if (data) {
+        for (let id in data) {
+          loadedItems.push({ id, ...data[id] });
+        }
+      }
+      setLive(loadedItems);
+    });
+    return () => {
+      unsubscribeStream();
+    };
   }, []);
 
   return (
@@ -82,17 +108,85 @@ const Dashboard = () => {
                   <p>a/n Rifaldi Azhari Arfah</p>
                 </div>
               </div>
-              <div className="mt-8 text-left">
-                <h3 className="font-bold text-2xl mb-3 text-yellow-500 border-b border-yellow-700 pb-2">
-                  Peraturan Pertandingan
-                </h3>
-                <ul className="list-disc list-inside space-y-2 pl-2 text-base">
-                  <li>Sistem Gugur (Single Elimination), Race 4</li>
-                  <li>Semi Final & Final: Race 5</li>
-                  <li>No Golden Break, Bola 9 di spot</li>
-                  <li>Maksimal 2 nama per pemain</li>
-                  <li>Keputusan panitia mutlak</li>
-                </ul>
+              <div className="grid md:grid-cols-2 gap-8 text-left text-lg mt-10">
+                <div className="">
+                  <h3 className="font-bold text-2xl mb-3 text-yellow-500 border-b border-yellow-700 pb-2">
+                    Peraturan Pertandingan
+                  </h3>
+                  <ul className="list-disc list-inside space-y-2 pl-2 text-base">
+                    <li>Sistem Gugur (Single Elimination), Race 4</li>
+                    <li>Semi Final & Final: Race 5</li>
+                    <li>No Golden Break, Bola 9 di spot</li>
+                    <li>Maksimal 2 nama per pemain</li>
+                    <li>Keputusan panitia mutlak</li>
+                  </ul>
+                </div>
+                <div className="">
+                  <h3 className="font-bold text-2xl mb-3 text-yellow-500 border-b border-yellow-700 pb-2">
+                    Nonton Live di
+                  </h3>
+                  <div className="flex gap-4">
+                    {live.length > 0 &&
+                      live.map((item) => (
+                        <div key={item.id}>
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.streamIn === "tiktok" && (
+                              <div className="flex flex-col items-center group">
+                                <span
+                                  className={`w-12 h-12 mb-2 flex items-center justify-center rounded-full group-hover:bg-pink-600 transition bg-pink-600`}
+                                >
+                                  <img
+                                    src={TiktokIcon}
+                                    alt="TikTok"
+                                    className="w-7 h-7"
+                                  />
+                                </span>
+                                <span className="text-gray-200 text-sm">
+                                  {item.name}
+                                </span>
+                              </div>
+                            )}
+                            {item.streamIn === "instagram" && (
+                              <div className="flex flex-col items-center group">
+                                <span
+                                  className={`w-12 h-12 mb-2 flex items-center justify-center rounded-full group-hover:bg-gradient-to-tr transition g-gradient-to-tr from-pink-500 to-yellow-400`}
+                                >
+                                  <img
+                                    src={InstagramIcon}
+                                    alt="Instagram"
+                                    className="w-7 h-7"
+                                  />
+                                </span>
+                                <span className="text-gray-200 text-sm">
+                                  {item.name}
+                                </span>
+                              </div>
+                            )}
+                            {item.streamIn === "youtube" && (
+                              <div className="flex flex-col items-center group">
+                                <span
+                                  className={`w-12 h-12 mb-2 flex items-center justify-center rounded-full group-hover:bg-red-500 transition bg-red-500 `}
+                                >
+                                  <img
+                                    src={YoutubeIcon}
+                                    alt="WhatsApp"
+                                    className="w-7 h-7"
+                                  />
+                                </span>
+                                <span className="text-gray-200 text-sm">
+                                  {item.name}
+                                </span>
+                              </div>
+                            )}
+                          </a>
+                        </div>
+                      ))}
+                  </div>
+                </div>
               </div>
               <div className="flex flex-row gap-3 justify-center mt-8">
                 <a

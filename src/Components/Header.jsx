@@ -3,7 +3,6 @@ import { Link } from "react-router";
 import logo from "../assets/logo.png";
 
 const Header = () => {
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -14,9 +13,13 @@ const Header = () => {
     <header className="bg-gray-800 shadow-lg sticky top-0 z-50">
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-yellow-600">
-        <img src={logo} alt="168 Tournament Logo" className="h-10 inline-block mr-2" />
+          <img
+            src={logo}
+            alt="168 Tournament Logo"
+            className="h-10 inline-block mr-2"
+          />
         </Link>
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex space-x-6 items-center">
           <Link
             to="/"
             className="text-gray-300 hover:text-white transition-colors duration-300"
@@ -35,12 +38,24 @@ const Header = () => {
           >
             Layanan
           </Link>
-    
+
           <Link
             to="/contact"
             className="text-gray-300 hover:text-white transition-colors duration-300"
           >
             Kontak
+          </Link>
+          <Link
+            to="/streamers"
+            className="inline-block bg-red-400 text-white text-center text-[15px] font-normal leading-[15px] py-3 px-6 rounded-[3px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-gray-500"
+          >
+            Live
+          </Link>
+          <Link
+            to="/login"
+            className="inline-block bg-gray-700 text-white text-center text-[15px] font-normal leading-[15px] py-3 px-6 rounded-[3px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-gray-500"
+          >
+            Panitia
           </Link>
         </div>
         <button
@@ -111,13 +126,25 @@ const Header = () => {
         >
           Layanan
         </Link>
-       
+
         <Link
           to="/contact"
           onClick={() => setIsMobileMenuOpen(false)}
           className="block px-6 py-2 text-gray-300 hover:bg-gray-700"
         >
           Kontak
+        </Link>
+        <Link
+          to="/streamers"
+          className="inline-block bg-red-400 text-white text-center text-[15px] font-normal leading-[15px] py-3 px-6 rounded-[3px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-gray-500"
+        >
+          Live
+        </Link>
+        <Link
+          to="/login"
+          className="inline-block bg-gray-700 text-white text-center text-[15px] font-normal leading-[15px] py-3 px-6 rounded-[3px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-gray-500"
+        >
+          Panitia
         </Link>
       </div>
     </header>

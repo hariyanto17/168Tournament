@@ -1,5 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { Bagan, Contact, Dashboard, Services } from "./pages";
+import {
+  Bagan,
+  Contact,
+  Dashboard,
+  Services,
+  Login,
+  Register,
+  Streamers,
+} from "./pages";
 
 let router = createBrowserRouter([
   {
@@ -17,7 +25,19 @@ let router = createBrowserRouter([
   {
     path: "/contact",
     Component: Contact,
-  }
+  },
+  {
+    path: "/login",
+    Component: Login,
+  },
+  {
+    path: "/register",
+    Component: Register,
+  },
+  {
+    path: "/streamers",
+    Component: Streamers,
+  },
 ]);
 
 const App = () => {

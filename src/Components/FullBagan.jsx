@@ -1,10 +1,20 @@
 import * as d3 from "d3";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import PlayerModal from "./PlayerModal";
 
 const FullBagan = ({ data }) => {
   const leftData = data.children[0];
   const rightData = data.children[1];
   const svgRef = useRef(null);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+
+  const playerClick = (player) => {
+    setSelectedPlayer(player);
+  };
+
+  const closeModal = () => {
+    setSelectedPlayer(null);
+  };
 
   useEffect(() => {
     if (!svgRef.current) return;
@@ -12,7 +22,6 @@ const FullBagan = ({ data }) => {
     const width = window.innerWidth - 32;
     const height = window.innerHeight - 200;
     const horizontalSpacing = 400;
-
 
     const tree = d3.tree().nodeSize([30, 80]);
 
@@ -38,9 +47,8 @@ const FullBagan = ({ data }) => {
 
     const zoom = d3
       .zoom()
-      .scaleExtent([0.2, 2]) 
+      .scaleExtent([0.2, 2])
       .on("zoom", (event) => {
-        console.log("event", event);
         g.attr("transform", event.transform);
       });
     svg.call(zoom);
@@ -80,7 +88,10 @@ const FullBagan = ({ data }) => {
           return `translate(${y},${parentX + verticalOffset})`;
         })
         .attr("fill-opacity", 0)
-        .attr("stroke-opacity", 0);
+        .attr("stroke-opacity", 0)
+        .on("click", (event, d) => {
+          playerClick(d.data);
+        });
 
       nodeEnter
         .append("circle")
@@ -310,6 +321,7 @@ const FullBagan = ({ data }) => {
   return (
     <div className="flex flex-col items-center">
       <svg ref={svgRef} className="cursor-grab w-full"></svg>
+      <PlayerModal player={selectedPlayer} onClose={closeModal} />
     </div>
   );
 };
