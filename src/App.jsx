@@ -8,6 +8,8 @@ import {
   Register,
   Streamers,
   Participant,
+  ScoreBoard,
+  ScoreBoardSettings,
 } from "./pages";
 
 let router = createBrowserRouter([
@@ -42,6 +44,14 @@ let router = createBrowserRouter([
   {
     path: "/participant",
     Component: Participant,
+  },
+  {
+    path: "/scoreboard",
+    Component: ScoreBoard,
+  },
+  {
+    path: "/scoreboard-settings",
+    Component: ScoreBoardSettings,
   },
 ]);
 

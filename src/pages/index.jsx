@@ -6,5 +6,18 @@ import Login from "./Login";
 import Register from "./Register";
 import Streamers from "./Stremers";
 import Participant from "./participant";
+import ScoreBoard from "./ScoreBoard";
+import ScoreBoardSettings from "./ScoreBoardSettings";
 
-export { Dashboard, Bagan, Services, Contact, Login, Register, Streamers, Participant };
+export {
+  Dashboard,
+  Bagan,
+  Services,
+  Contact,
+  Login,
+  Register,
+  Streamers,
+  Participant,
+  ScoreBoard,
+  ScoreBoardSettings,
+};
