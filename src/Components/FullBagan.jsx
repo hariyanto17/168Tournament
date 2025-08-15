@@ -322,7 +322,7 @@ const FullBagan = ({ data }) => {
     return () => {
       svg.selectAll("*").remove();
     };
-  }, [data, svgRef, leftData, rightData]);
+  }, [data, svgRef, leftData, rightData, playerClick]);
 
   return (
     <div className="flex flex-col items-center">
