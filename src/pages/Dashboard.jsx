@@ -79,14 +79,17 @@ const Dashboard = () => {
                   </h3>
                   <p>
                     <strong className="font-semibold">Tanggal:</strong> Minggu,
-                    17 Agustus 2025
+                    16-17 Agustus 2025
                   </p>
                   <p>
-                    <strong className="font-semibold">Waktu:</strong> 10:00 AM -
+                    <strong className="font-semibold">Waktu:</strong> 10:30 AM -
                     Selesai
                   </p>
                   <p>
                     <strong className="font-semibold">Slot:</strong> 128 Peserta
+                  </p>
+                  <p>
+                    <strong className="font-semibold">WO :</strong> 10:45 WITA
                   </p>
                 </div>
                 <div>

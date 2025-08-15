@@ -9,10 +9,12 @@ const FullBagan = ({ data }) => {
   const svgRef = useRef(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
 
-  const { isLogin } = useSelector((state) => state.user);
+  const { isLoggedIn } = useSelector((state) => state.user);
 
   const playerClick = (player) => {
-    if (!isLogin) return;
+    console.log("isLogin", isLoggedIn);
+    console.log("player", player);
+    if (!isLoggedIn) return;
     setSelectedPlayer(player);
   };
 
